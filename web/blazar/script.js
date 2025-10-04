@@ -9,7 +9,7 @@ function do_fetch(request) {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-    console.log('Document Loaded')
+    console.log('Document Loaded');
 }); // run on document laod
 
 //..........................................................................MAIN
