@@ -2,16 +2,53 @@
 //.......................................................................HELPERS     
 
 function do_fetch(request) {
-    fetch(request).then((response) => {
-        if (response.ok) console.log(`Request OK ${request}`);
-        else console.error(`FAIL Reques ${request}`);
-    }).catch((error) => console.error(`Exception on ${request}`, error));
+  fetch(request).then((response) => {
+    if (response.ok) console.log(`Request OK ${request}`);
+    else console.error(`FAIL Request ${request}`);
+  }).catch((error) => console.error(`Exception on ${request}`, error));
+}
+
+function childIndex(el) {
+  const kids = el.parentNode.children;
+  for (let i = 0; i < kids.length; i++)
+    if (kids[i] === el) return i;
+  return -1;
+}
+
+//..........................................................................INIT
+
+function bindInputHandlers() {
+  Array.from(document.getElementById('ID-mode-root').children)
+    .forEach((el, i) => el.addEventListener('click', function() { Main.setActive(i); Mode.setActive(i); }));
+  console.log('Binded handlers for input elements');
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-    console.log('Document Loaded');
+  console.log('Document Loaded');
+  bindInputHandlers();
 }); // run on document laod
+
+//..........................................................................MODE
+
+const Mode = {
+  setActive(idx) {
+    const signals = document.getElementById('ID-mode-root-signals').children;
+    for (let i = 0; i < signals.length; i++)
+      setSignal(signals[i], i === idx);
+    // inner func
+    function setSignal(parent, isOn) {
+      parent.children[0].style.display = isOn ? '' : 'none';
+      parent.children[1].style.display = isOn ? 'none' : '';
+    }
+  }
+}
 
 //..........................................................................MAIN
 
-
+const Main = {
+  setActive(idx) {
+    const contents = document.getElementById('ID-main').children;
+    for (let i = 0; i < contents.length; i++)
+      contents[i].style.display = i === idx ? '' : 'none';
+  }
+}
