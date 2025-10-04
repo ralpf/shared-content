@@ -81,6 +81,10 @@ Main.Lamp = {
   },
 
   setLampMode(val) {
+    const idx = parseInt(val, 10) - 1;
+    const contents = document.getElementById('ID-lamp-mode-content').children;
+    for (let i = 0; i < contents.length; i++)
+      contents[i].style.display = i === idx ? 'flex' : 'none';
   }
 };
 
