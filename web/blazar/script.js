@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function() {  // <~~~~ ON DOM LOAD
   console.log('Document Loaded');
   bindInputHandlers();
   console.log('Binded handlers for input elements');
-  initPage();
+  initInputVisuals();
   console.log('Applied defaults');
 });
 
@@ -31,9 +31,10 @@ function bindInputHandlers() {    // <~~~ HANDLERS
   Main.Lamp.bindInputHandlers();
 }
 
-function initPage() {
+function initInputVisuals() {
   Main.setActive(0);
   Mode.setActive(0);
+  Main.Lamp.initInputVisuals();
 }
 
 //..........................................................................MODE
@@ -69,6 +70,12 @@ Main.Lamp = {
   bindInputHandlers() {
     document.getElementById('ID-lamp-flicker').addEventListener('change', 
       function() { document.getElementById('ID-lamp-flicker-content').style.display = this.checked ? 'flex' : 'none'; });
+  },
+
+  initInputVisuals() {
+    const flicker = document.getElementById('ID-lamp-flicker');
+    flicker.checked = true;
+    flicker.dispatchEvent(new Event('change'));
   }
 };
 
