@@ -17,22 +17,24 @@ function childIndex(el) {
 
 //..........................................................................INIT
 
+document.addEventListener("DOMContentLoaded", function() {  // <~~~~ ON DOM LOAD
+  console.log('Document Loaded');
+  bindInputHandlers();
+  console.log('Binded handlers for input elements');
+  initPage();
+  console.log('Applied defaults');
+});
+
 function bindInputHandlers() {    // <~~~ HANDLERS
   Array.from(document.getElementById('ID-mode-root').children)
     .forEach((el, i) => el.addEventListener('click', function() { Main.setActive(i); Mode.setActive(i); }));
-  console.log('Binded handlers for input elements');
+  Main.Lamp.bindInputHandlers();
 }
 
 function initPage() {
   Main.setActive(0);
   Mode.setActive(0);
 }
-
-document.addEventListener("DOMContentLoaded", function() {
-  console.log('Document Loaded');
-  bindInputHandlers();
-  initPage();
-}); // run on document laod
 
 //..........................................................................MODE
 
