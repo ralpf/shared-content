@@ -9,7 +9,7 @@ function do_fetch(request) {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-    Main.ModeChanged(document.getElementById('main-dropdown').value);
+    console.log('Document Loaded')
 }); // run on document laod
 
 //..........................................................................MAIN
