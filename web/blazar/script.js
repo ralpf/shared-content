@@ -23,9 +23,15 @@ function bindInputHandlers() {
   console.log('Binded handlers for input elements');
 }
 
+function initPage() {
+  Main.setActive(0);
+  Mode.setActive(0);
+}
+
 document.addEventListener("DOMContentLoaded", function() {
   console.log('Document Loaded');
   bindInputHandlers();
+  initPage();
 }); // run on document laod
 
 //..........................................................................MODE
