@@ -17,7 +17,7 @@ function childIndex(el) {
 
 //..........................................................................INIT
 
-function bindInputHandlers() {
+function bindInputHandlers() {    // <~~~ HANDLERS
   Array.from(document.getElementById('ID-mode-root').children)
     .forEach((el, i) => el.addEventListener('click', function() { Main.setActive(i); Mode.setActive(i); }));
   console.log('Binded handlers for input elements');
@@ -58,3 +58,15 @@ const Main = {
       contents[i].style.display = i === idx ? 'flex' : 'none';
   }
 }
+
+Main.Settings = {
+  
+};
+
+Main.Lamp = {
+  bindInputHandlers() {
+    document.getElementById('ID-lamp-flicker').addEventListener('change', 
+      function() { document.getElementById('ID-lamp-flicker-content').style.display = this.checked ? 'flex' : 'none'; });
+  }
+};
+
