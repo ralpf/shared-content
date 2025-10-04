@@ -37,8 +37,8 @@ const Mode = {
       setSignal(signals[i], i === idx);
     // inner func
     function setSignal(parent, isOn) {
-      parent.children[0].style.display = isOn ? '' : 'none';
-      parent.children[1].style.display = isOn ? 'none' : '';
+      parent.children[0].style.display = isOn ? 'flex' : 'none';
+      parent.children[1].style.display = isOn ? 'none' : 'flex';
     }
   }
 }
@@ -49,6 +49,6 @@ const Main = {
   setActive(idx) {
     const contents = document.getElementById('ID-main').children;
     for (let i = 0; i < contents.length; i++)
-      contents[i].style.display = i === idx ? '' : 'none';
+      contents[i].style.display = i === idx ? 'flex' : 'none';
   }
 }
