@@ -1,5 +1,5 @@
 
-import { nearestNamedColor } from './colorUtil.js'
+import { ElSmartPicker } from './Elements/SmartColorPicker.js'
 
 //.......................................................................HELPERS     
 
@@ -57,6 +57,7 @@ const Mode = {
 //..........................................................................MAIN
 
 const Main = {
+  // toggle the main panel elements
   setActive(idx) {
     const contents = document.getElementById('ID-main').children;
     for (let i = 0; i < contents.length; i++)
@@ -69,6 +70,9 @@ Main.Settings = {
 };
 
 Main.Lamp = {
+
+  elSmartPicker: null,
+
   bindInputHandlers() {
     // flicker toggle
     document.getElementById('ID-lamp-flicker').addEventListener('change', 
@@ -80,8 +84,8 @@ Main.Lamp = {
   initInputVisuals() {
     const flicker = document.getElementById('ID-lamp-flicker');       flicker.checked = true;  flicker.dispatchEvent(new Event('change'));
     const lampmode = document.getElementById('ID-lamp-mode-select');  lampmode.value = '1';    lampmode.dispatchEvent(new Event('change'));
-    const xx = document.getElementById('iqbgb1');
-    xx.textContent = nearestNamedColor('keks');
+    this.elSmartPicker = new ElSmartPicker('iqmg6j');
+    this.elSmartPicker.setColorRandom();
   },
 
   setLampMode(val) {
