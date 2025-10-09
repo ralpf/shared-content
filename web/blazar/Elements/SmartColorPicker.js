@@ -4,7 +4,7 @@ export class ElSmartPicker{
   constructor(id) {
     this.root = document.getElementById(id);
     this.label = this.root.querySelector('label');
-    const box = this.label.nextElementSibling;
+    const box = this.root.querySelector('div');
     [this.delete, this.color, this.add] = box.querySelectorAll('button, input');
   }
 
