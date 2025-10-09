@@ -1,4 +1,6 @@
 
+import { nearestNamedColor } from './colorUtil.js'
+
 //.......................................................................HELPERS     
 
 function do_fetch(request) {
@@ -78,6 +80,8 @@ Main.Lamp = {
   initInputVisuals() {
     const flicker = document.getElementById('ID-lamp-flicker');       flicker.checked = true;  flicker.dispatchEvent(new Event('change'));
     const lampmode = document.getElementById('ID-lamp-mode-select');  lampmode.value = '1';    lampmode.dispatchEvent(new Event('change'));
+    const xx = document.getElementById('iqbgb1');
+    xx.textContent = nearestNamedColor('keks');
   },
 
   setLampMode(val) {
