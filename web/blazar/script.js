@@ -1,6 +1,5 @@
 
 import { ElSmartPicker } from './Elements/SmartColorPicker.js'
-import { fff }           from './Elements/SmartColorPicker.js'
 
 //.......................................................................HELPERS     
 
@@ -86,6 +85,7 @@ Main.Lamp = {
     const flicker = document.getElementById('ID-lamp-flicker');       flicker.checked = true;  flicker.dispatchEvent(new Event('change'));
     const lampmode = document.getElementById('ID-lamp-mode-select');  lampmode.value = '1';    lampmode.dispatchEvent(new Event('change'));
     this.elSmartPicker = new ElSmartPicker('iqmg6j');
+    console.log('will call !!!!!!!!');
     this.elSmartPicker.setColorRandom();
   },
 

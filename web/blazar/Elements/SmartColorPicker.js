@@ -11,10 +11,12 @@ export class ElSmartPicker{
   
   updateLabel() {
     this.label.textContent = colorUtil.getNearestColorName(hex);
+    console.log('text updated ' + this.label.textContent);
   }
   
   setColor(hex) {
     this.color.value = hex;
+    console.log('color set to ' + hex);
     this.updateLabel();
   }
 
