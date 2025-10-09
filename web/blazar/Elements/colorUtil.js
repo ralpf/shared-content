@@ -1,6 +1,3 @@
-
-
-
 export const colorUtil = {
   // match nearest color name from all known colors
   getNearestColorName(hex) {

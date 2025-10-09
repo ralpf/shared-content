@@ -23,3 +23,6 @@ export class ElSmartPicker{
     console.log('color random set ~~~~~~~~~v');
   }
 }
+
+
+export function fff() { console.log('FFFFFFFFFFFFFFFFFFFFFFFFFFFFF'); }
