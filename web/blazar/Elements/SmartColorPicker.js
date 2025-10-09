@@ -14,15 +14,11 @@ export class ElSmartPicker{
   }
   
   setColor(hex) {
-    this.input.value = hex;
+    this.color.value = hex;
     this.updateLabel();
   }
 
   setColorRandom() {
     this.setColor( colorUtil.getRandom() );
-    console.log('color random set ~~~~~~~~~v');
   }
 }
-
-
-export function fff() { console.log('FFFFFFFFFFFFFFFFFFFFFFFFFFFFF'); }

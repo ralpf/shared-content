@@ -85,11 +85,8 @@ Main.Lamp = {
   initInputVisuals() {
     const flicker = document.getElementById('ID-lamp-flicker');       flicker.checked = true;  flicker.dispatchEvent(new Event('change'));
     const lampmode = document.getElementById('ID-lamp-mode-select');  lampmode.value = '1';    lampmode.dispatchEvent(new Event('change'));
-    console.log('jjjjjjjjjjjjjjj');
     this.elSmartPicker = new ElSmartPicker('iqmg6j');
     this.elSmartPicker.setColorRandom();
-    console.log('ffffffffffffffffffff');
-    console.log(fff());
   },
 
   setLampMode(val) {
