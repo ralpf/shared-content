@@ -79,13 +79,14 @@ Main.Lamp = {
       function() { document.getElementById('ID-lamp-flicker-content').style.display = this.checked ? 'flex' : 'none'; });
     // mode select dropdown
     document.getElementById('ID-lamp-mode-select').addEventListener('change', function() { Main.Lamp.setLampMode(this.value); });
+    // color picker with name infer
+    
   },
 
   initInputVisuals() {
     const flicker = document.getElementById('ID-lamp-flicker');       flicker.checked = true;  flicker.dispatchEvent(new Event('change'));
     const lampmode = document.getElementById('ID-lamp-mode-select');  lampmode.value = '1';    lampmode.dispatchEvent(new Event('change'));
     this.elSmartPicker = new ElSmartPicker('iqmg6j');
-    console.log('will call !!!!!!!!');
     this.elSmartPicker.setColorRandom();
   },
 
