@@ -51,6 +51,6 @@ export class ElSmartPicker {
     else if (len > 16) scale = 0.7;
     else if (len > 12) scale = 0.8;
     else if (len > 8) scale = 0.9;
-    el.style.fontSize = (base * scale) + 'px';
+    el.style.fontSize = (base * scale * 1.3) + 'px';
   }
 }
