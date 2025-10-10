@@ -1,5 +1,5 @@
 
-import { ElSmartPicker } from './Elements/SmartColorPicker.js'
+import { ColorPickerItem } from './Elements/ListColorPicker.js'
 
 //.......................................................................HELPERS     
 
@@ -71,7 +71,7 @@ Main.Settings = {
 
 Main.Lamp = {
 
-  elSmartPicker: null,
+  listColorPickers: null,
 
   bindInputHandlers() {
     // flicker toggle
@@ -86,8 +86,7 @@ Main.Lamp = {
   initInputVisuals() {
     const flicker = document.getElementById('ID-lamp-flicker');       flicker.checked = true;  flicker.dispatchEvent(new Event('change'));
     const lampmode = document.getElementById('ID-lamp-mode-select');  lampmode.value = '1';    lampmode.dispatchEvent(new Event('change'));
-    this.elSmartPicker = new ElSmartPicker('iqmg6j');
-    this.elSmartPicker.setColorRandom();
+    this.listColorPickers = new ColorPickerList('iqmg6j', txt => console.log(txt));
   },
 
   setLampMode(val) {
