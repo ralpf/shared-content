@@ -42,14 +42,15 @@ export class ElSmartPicker {
     return spaced.replace(/\b\w/g, c => c.toUpperCase());
   }
 
-  #autoFitText(el, maxWidth) {
-    const style = getComputedStyle(el);
-    const original = parseFloat(style.fontSize);
-    let size = original;
-    el.style.fontSize = original + 'px';
-    while (el.scrollWidth > maxWidth && size > 6) {
-      size -= 0.5;
-      el.style.fontSize = size + 'px';
-    }
+  #autoFitText(el) {
+    const len = el.textContent.length;
+    const base = 16;
+    let scale = 1;
+    if (len > 24) scale = 0.5;
+    else if (len > 20) scale = 0.6;
+    else if (len > 16) scale = 0.7;
+    else if (len > 12) scale = 0.8;
+    else if (len > 8) scale = 0.9;
+    el.style.fontSize = (base * scale) + 'px';
   }
 }
