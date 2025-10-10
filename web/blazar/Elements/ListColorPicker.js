@@ -41,11 +41,11 @@ class ColorPickerItem {
     this.onChange(this);      // invoke handler
   }
 
-  #on_AddClicked() {
+  #on_AddClicked = () => {
     this.onAdd(this);         // invoke handler
   }
 
-  #on_DeleteClicked() {
+  #on_DeleteClicked = () => {
     this.onDel(this);         // invoke handler
   }
 
