@@ -24,6 +24,7 @@ class ColorPickerItem {
   setColor(hex) {
     this.color.value = hex;
     this.updateLabel();
+    this.color.dispatchEvent(new Event('change', { bubbles: true }));
   }
   
   setColorRandom() {
@@ -98,6 +99,7 @@ export class ColorPickerList {
     this.#removeIdAttribute(clone);
     item.root.after(clone);
     const newItem = new ColorPickerItem(clone, x => this.#onItemChange(x), x => this.#onItemAdd(x), x => this.#onItemDelete(x));
+    newItem.setColorRandom();
     const idx = this.list.indexOf(item);
     this.list.splice(idx + 1, 0, newItem);
   }
