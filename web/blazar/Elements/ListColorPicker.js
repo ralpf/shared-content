@@ -10,9 +10,9 @@ class ColorPickerItem {
     this.onChange = onChange;
     this.onAdd = onAdd;
     this.onDel = onDel;
-    this.color.addEventListener('change', this.#on_ColorChange);
-    this.delete.addEventListener('click', this.#on_DeleteClicked);
-    this.add.addEventListener('click', this.#on_AddClicked);
+    this.color.addEventListener('change', () => this.#on_ColorChange());
+    this.delete.addEventListener('click', () => this.#on_DeleteClicked());
+    this.add.addEventListener('click', () => this.#on_AddClicked());
   }
 
   updateLabel() {
@@ -36,16 +36,16 @@ class ColorPickerItem {
   
   //.......................................PRIVATE
   
-  #on_ColorChange = (x) => {  // => preserves 'this'
+  #on_ColorChange(hsv) {  // => preserves 'this'
     this.updateLabel();
     this.onChange(this);      // invoke handler
   }
 
-  #on_AddClicked = () => {
+  #on_AddClicked() {
     this.onAdd(this);         // invoke handler
   }
 
-  #on_DeleteClicked = () => {
+  #on_DeleteClicked() {
     this.onDel(this);         // invoke handler
   }
 
@@ -86,7 +86,7 @@ export class ColorPickerList {
     if (!firstEl) throw new Error(`No id '${idFirstElement}' found in ducument. Can't create list controller`);
   
     this.onChange = onChange;
-    this.firstItem = new ColorPickerItem(firstEl, this.#onItemChange, this.#onItemAdd, this.#onItemDelete);
+    this.firstItem = new ColorPickerItem(firstEl, x => this.#onItemChange(x), x => this.#onItemAdd(x), x => this.#onItemDelete(x));
     this.firstItem.setColorRandom();
     this.list.push(this.firstItem);
   }
@@ -97,7 +97,7 @@ export class ColorPickerList {
     const clone = item.root.cloneNode(true);
     this.#removeIdAttribute(clone);
     item.root.after(clone);
-    const newItem = new ColorPickerItem(clone, this.#onItemChange, this.#onItemAdd, this.#onItemDelete);
+    const newItem = new ColorPickerItem(clone, x => this.#onItemChange(x), x => this.#onItemAdd(x), x => this.#onItemDelete(x));
     const idx = this.list.indexOf(item);
     this.list.splice(idx + 1, 0, newItem);
   }
