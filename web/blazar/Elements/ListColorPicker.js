@@ -1,6 +1,6 @@
 import { colorUtil } from './colorUtil.js'
 
-export class ColorPickerItem {
+class ColorPickerItem {
   constructor(rootEl, onChange = null, onAdd = null, onDel = null) {
     this.root = rootEl;
     this.label = this.root.querySelector('label');

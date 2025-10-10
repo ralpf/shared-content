@@ -1,5 +1,5 @@
 
-import { ColorPickerItem } from './Elements/ListColorPicker.js'
+import { ColorPickerList } from './Elements/ListColorPicker.js'
 
 //.......................................................................HELPERS     
 
