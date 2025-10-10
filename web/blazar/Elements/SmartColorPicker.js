@@ -43,6 +43,7 @@ export class ElSmartPicker {
   }
 
   #autoFitText(el) {
+    el.style.fontSize = '';  // reset to default first
     const len = el.textContent.length;
     const def = parseFloat(getComputedStyle(el).fontSize);
     let scale = 1;
