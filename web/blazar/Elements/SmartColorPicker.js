@@ -43,7 +43,10 @@ export class ElSmartPicker {
   }
 
   #autoFitText(el, maxWidth) {
-    let size = parseFloat(getComputedStyle(el).fontSize);
+    const style = getComputedStyle(el);
+    const original = parseFloat(style.fontSize);
+    let size = original;
+    el.style.fontSize = original + 'px';
     while (el.scrollWidth > maxWidth && size > 6) {
       size -= 0.5;
       el.style.fontSize = size + 'px';
