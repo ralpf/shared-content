@@ -68,3 +68,10 @@ const known_colors = {
   whiteSmoke: '#f5f5f5', yellow: '#ffff00', yellowGreen: '#9acd32'
 };
 
+export const locatorUtil = {
+  findById(id) {
+    const x = document.getElementById(id);
+    if (!x) throw new Error(`element with id '${id}' not found`);
+    return x;
+  }
+};

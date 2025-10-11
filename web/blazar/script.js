@@ -1,7 +1,9 @@
+//........................................................................IMPORT
 
-import { ColorPickerList } from './Elements/ListColorPicker.js'
+import { ColorPickerList } from './listColorPickers.js'
+import { DropdownGroup } from './dropdownGroups.js'
 
-//.......................................................................HELPERS     
+//.......................................................................HELPERS
 
 function do_fetch(request) {
   fetch(request).then((response) => {
@@ -21,13 +23,20 @@ function childIndex(el) {
 
 document.addEventListener("DOMContentLoaded", function() {  // <~~~~ ON DOM LOAD
   console.log('Document Loaded');
+  init();
+  console.log('Scripts inited');
   bindInputHandlers();
   console.log('Binded handlers for input elements');
   initInputVisuals();
   console.log('Applied defaults');
 });
 
-function bindInputHandlers() {    // <~~~ HANDLERS
+function init() {
+  Main.Lamp.init();
+  Main.Deck.init();
+}
+
+function bindInputHandlers() {
   Array.from(document.getElementById('ID-mode-root').children)
     .forEach((el, i) => el.addEventListener('click', function() { Main.setActive(i); Mode.setActive(i); }));
   Main.Lamp.bindInputHandlers();
@@ -65,35 +74,51 @@ const Main = {
   }
 }
 
+//.................................................................MAIN-SETTINGS
+
 Main.Settings = {
   
 };
 
-Main.Lamp = {
+//.....................................................................MAIN-LAMP
 
+Main.Lamp = {
   listColorPickers: null,
+
+  init() {
+    this.modeSelector = new DropdownGroup('ID-lamp-mode-select', 'ID-lamp-mode-content');
+    this.listColorPickers = new ColorPickerList('iqmg6j', txt => console.log(txt));
+  },
 
   bindInputHandlers() {
     // flicker toggle
     document.getElementById('ID-lamp-flicker').addEventListener('change', 
       function() { document.getElementById('ID-lamp-flicker-content').style.display = this.checked ? 'flex' : 'none'; });
-    // mode select dropdown
-    document.getElementById('ID-lamp-mode-select').addEventListener('change', function() { Main.Lamp.setLampMode(this.value); });
-    // color picker with name infer
-    
   },
 
   initInputVisuals() {
     const flicker = document.getElementById('ID-lamp-flicker');       flicker.checked = true;  flicker.dispatchEvent(new Event('change'));
-    const lampmode = document.getElementById('ID-lamp-mode-select');  lampmode.value = '1';    lampmode.dispatchEvent(new Event('change'));
-    this.listColorPickers = new ColorPickerList('iqmg6j', txt => console.log(txt));
   },
 
-  setLampMode(val) {
+};
+
+//.....................................................................MAIN-DECK
+
+Main.Deck = {
+
+  init() {
+    this.modeSelector = new DropdownGroup('ID-deck-mode-select', 'ID-deck-mode-content');
+  },
+
+  bindInputHandlers() {
+  },
+
+  setDeckMode(val) {
     const idx = parseInt(val, 10) - 1;
-    const contents = document.getElementById('ID-lamp-mode-content').children;
-    for (let i = 0; i < contents.length; i++)
-      contents[i].style.display = i === idx ? 'flex' : 'none';
+    const all = document.getElementById('ID-deck-mode-content').children;
+    for (let i = 0; i < all.length; i++)
+      all[i].style.display = i === idx ? 'flex' : 'none';
   }
+
 };
 

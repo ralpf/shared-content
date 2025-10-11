@@ -1,4 +1,4 @@
-import { colorUtil } from './colorUtil.js'
+import { colorUtil } from './utils.js'
 
 class ColorPickerItem {
   constructor(rootEl, onChange = null, onAdd = null, onDel = null) {
