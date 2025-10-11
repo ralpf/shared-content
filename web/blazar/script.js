@@ -1,7 +1,9 @@
+console.log('>>> script.js STARTED');
+
 //........................................................................IMPORT
 
-import { ColorPickerList } from './listColorPickers.js'
-import { DropdownGroup } from './dropdownGroups.js'
+import { ColorPickerList } from './listColorPickers.js';
+import { DropdownGroup } from './dropdownGroups.js';
 
 //.......................................................................HELPERS
 
