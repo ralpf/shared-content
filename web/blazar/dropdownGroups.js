@@ -1,4 +1,4 @@
-import { locatorUtil } from "./utils";
+import { locatorUtil } from "./utils.js";
 
 export class DropdownGroup {
 
